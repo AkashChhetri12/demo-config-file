@@ -25,7 +25,7 @@ pipeline {
                         x=`ls -f ./*/*/*/*/*`
                         for f in $x ; do cp $f ./config_files/ ; done
                         cd config_files
-                        ls -al
+                        ls -l
                         git status
                         git add .
                         commitMessage="Triggered Build: $BUILD_NUMBER"
