@@ -13,7 +13,7 @@ pipeline {
                 
                  sh '''
                     #!/bin/bash
-                    git switch configFiles || git switch -c configFiles
+                    git checkout configFiles || git checkout -b configFiles
                     mkdir -p config_files
                     x=`ls -f ./*/*/*/*/*`
                     for f in $x ; do cp $f ./config_files/ ; done
