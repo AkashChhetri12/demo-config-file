@@ -15,14 +15,16 @@ pipeline {
                     #!/bin/bash
                     #mkdir -p config_files
                     #x=`ls -f ./*/*/*/*/*`
-                    # for f in $x ; do cp $f ./config_files/ ; done
+                    #for f in $x ; do cp $f ./config_files/ ; done
                     #git status
                     #git add ./config_files/*
                     #commitMessage="Triggered Build: $BUILD_NUMBER"
                     #git diff-index --quiet HEAD || git commit -m "${commitMessage}"
                     #git push --set-upstream origin configFiles
                     git checkout configFiles || git checkout -b configFiles
-                    git checkout main /*/*/*/*/*
+                    working=`pwd`
+                    x=`ls -f $working/*/*/*/*/*`
+                    for f in $x ; do git checkout main  ; done
                  '''
                  
 
