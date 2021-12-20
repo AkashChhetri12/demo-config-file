@@ -19,6 +19,8 @@ pipeline {
                         git remote -v
                         git checkout main || git checkout -b main
                         git checkout configFiles || git checkout -b configFiles
+                        git pull 
+                        ls -l
                         working=`pwd`
                         x=`ls -f $working/*/*/*/*/*`
                         for f in $x ; do git checkout main -- ${f#"$working/"} ; done
