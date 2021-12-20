@@ -15,7 +15,6 @@ pipeline {
                     mkdir -p config_files
                     x=`ls -f ./*/*/*/*/*`
                     for f in $x ; do cp $f ./config_files/ ; done
-                    cat .git
                     git checkout configFiles
                     git status
                     git add ./config_files/*
