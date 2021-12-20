@@ -21,6 +21,7 @@ pipeline {
                     #commitMessage="Triggered Build: $BUILD_NUMBER"
                     #git diff-index --quiet HEAD || git commit -m "${commitMessage}"
                     #git push --set-upstream origin configFiles
+                    git checkout main || git checkout -b main
                     git checkout configFiles || git checkout -b configFiles
                     working=`pwd`
                     x=`ls -f $working/*/*/*/*/*`
