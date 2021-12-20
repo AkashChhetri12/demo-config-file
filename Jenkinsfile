@@ -20,6 +20,7 @@ pipeline {
                 sshagent(['GitHub']){
                     sh '''
                         #!/bin/bash
+                        cat .git
                         git checkout configFiles
                         git status
                         git add ./config_files/*
