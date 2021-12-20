@@ -24,7 +24,7 @@ pipeline {
                     git checkout configFiles || git checkout -b configFiles
                     working=`pwd`
                     x=`ls -f $working/*/*/*/*/*`
-                    for f in $x ; do git checkout main ${f#"$working"} ; done
+                    for f in $x ; do git checkout main ${f#"$working/"} ; done
                  '''
                  
 
