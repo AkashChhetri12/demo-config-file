@@ -26,6 +26,7 @@ pipeline {
                     working=`pwd`
                     x=`ls -f $working/*/*/*/*/*`
                     for f in $x ; do git checkout main ${f#"$working/"} ; done
+                    ls -al
                  '''
                  
 
