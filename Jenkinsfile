@@ -3,13 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clean workspace') {
-            
-            steps {
-                // Clean before build
-                cleanWs()
-            }
-        }
         
         stage('Copying files') {
             environment {
@@ -23,7 +16,7 @@ pipeline {
                     mkdir -p config_files
                     x=`ls -f ./*/*/*/*/*`
                     for f in $x ; do cp $f ./config_files/ ; done
-                    git checkout -b configFiles
+                    git switch -c configFiles
                     git status
                     git add ./config_files/*
                     commitMessage="Triggered Build: $BUILD_NUMBER"
