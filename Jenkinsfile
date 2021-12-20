@@ -18,6 +18,7 @@ pipeline {
                     for f in $x ; do cp $f ./config_files/ ; done
                     git switch configFiles || git switch -c configFiles
                     git status
+
                     git add ./config_files/*
                     commitMessage="Triggered Build: $BUILD_NUMBER"
                     git diff-index --quiet HEAD || git commit -m "${commitMessage}"
