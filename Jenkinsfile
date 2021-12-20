@@ -16,7 +16,7 @@ pipeline {
                         git remote -v
                         git checkout main || git checkout -b main
                         git checkout configFiles || git checkout -b configFiles
-                        git pull HEAD:configFiles
+                        git pull origin configFiles
                         ls -l
                         working=`pwd`
                         x=`ls -f $working/*/*/*/*/*`
