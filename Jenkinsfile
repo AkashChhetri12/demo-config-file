@@ -16,7 +16,7 @@ pipeline {
                     mkdir -p config_files
                     x=`ls -f ./*/*/*/*/*`
                     for f in $x ; do cp $f ./config_files/ ; done
-                    git switch -c configFiles
+                    git switch configFiles || git switch -c configFiles
                     git status
                     git add ./config_files/*
                     commitMessage="Triggered Build: $BUILD_NUMBER"
