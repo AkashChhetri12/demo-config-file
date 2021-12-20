@@ -12,7 +12,7 @@ pipeline {
                 
                  sh '''
                     #!/bin/bash
-                    mkdir config_files
+                    mkdir -p config_files
                     x=`ls -f ./*/*/*/*/*`
                     for f in $x ; do cp $f ./config_files/ ; done
                  '''
