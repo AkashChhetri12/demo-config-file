@@ -22,7 +22,7 @@ pipeline {
                     #git diff-index --quiet HEAD || git commit -m "${commitMessage}"
                     #git push --set-upstream origin configFiles
                     git checkout configFiles || git checkout -b configFiles
-                    git checkout main ./*/*/*/*/*
+                    git checkout main /*/*/*/*/*
                  '''
                  
 
