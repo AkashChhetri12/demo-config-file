@@ -2,6 +2,14 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Clean workspace') {
+            
+            steps {
+                // Clean before build
+                cleanWs()
+            }
+        }
         
         stage('Copying files') {
             environment {
