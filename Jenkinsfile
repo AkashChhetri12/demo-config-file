@@ -27,9 +27,10 @@ pipeline {
                         cd config_files
                         ls -al
                         git status
+                        git add .
                         commitMessage="Triggered Build: $BUILD_NUMBER"
                         git diff-index --quiet HEAD || git commit -m "${commitMessage}"
-                        git push --set-upstream origin configFiles
+                        git push -u origin configFiles
                      '''
                     }
 
