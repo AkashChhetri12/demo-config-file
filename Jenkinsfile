@@ -10,28 +10,24 @@ pipeline {
               }
             
             steps {
-                
-                 sh '''
-                    #!/bin/bash
-                    #mkdir -p config_files
-                    #x=`ls -f ./*/*/*/*/*`
-                    #for f in $x ; do cp $f ./config_files/ ; done
-                    #git status
-                    #git add ./config_files/*
-                    #commitMessage="Triggered Build: $BUILD_NUMBER"
-                    #git diff-index --quiet HEAD || git commit -m "${commitMessage}"
-                    #git push --set-upstream origin configFiles
-                    git checkout main || git checkout -b main
-                    git checkout configFiles || git checkout -b configFiles
-                    working=`pwd`
-                    x=`ls -f $working/*/*/*/*/*`
-                    for f in $x ; do git checkout main -- ${f#"$working/"} ; done
-                    ls -al
-                    commitMessage="Triggered Build: $BUILD_NUMBER"
-                    git diff-index --quiet HEAD || git commit -m "${commitMessage}"
-                    git push --set-upstream origin configFiles
-                 '''
-                 
+
+                sshagent(['GitHub']){
+                    sh '''
+                        #!/bin/bash
+                        git ls-remote git@github.com:AkashChhetri12/demo-config-file.git
+                        git remote set-url origin git@github.com:AkashChhetri12/demo-config-file.git
+                        git remote -v
+                        git checkout main || git checkout -b main
+                        git checkout configFiles || git checkout -b configFiles
+                        working=`pwd`
+                        x=`ls -f $working/*/*/*/*/*`
+                        for f in $x ; do git checkout main -- ${f#"$working/"} ; done
+                        ls -al
+                        commitMessage="Triggered Build: $BUILD_NUMBER"
+                        git diff-index --quiet HEAD || git commit -m "${commitMessage}"
+                        git push --set-upstream origin configFiles
+                     '''
+                    }
 
             }
         }    
